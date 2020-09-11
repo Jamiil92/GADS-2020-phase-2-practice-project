@@ -24,35 +24,33 @@ In this lab, you learn how to perform the following tasks:
 	
 	b- Explore VM details
 
-	   Notice that you can't change the machine type, the CPU platform, or the zone.
+	  Notice that you can't change the machine type, the CPU platform, or the zone.
 
-	   You can add network tags and allow specific network traffic from the internet through firewalls.
-
-           Some properties of a VM are integral to the VM, are established when the VM is created, and cannot be changed.
+	  You can add network tags and allow specific network traffic from the internet through firewalls.
+	  
+	  Some properties of a VM are integral to the VM, are established when the VM is created, and cannot be changed.
 	
-	   Other properties can be edited. 
+	  Other properties can be edited. 
 
-	   You can add additional disks and you can also determine whether the boot disk is deleted when the instance is deleted.
+	  You can add additional disks and you can also determine whether the boot disk is deleted when the instance is deleted.
 
-	   Normally the boot disk defaults to being deleted automatically when the instance is deleted.
+	  Normally the boot disk defaults to being deleted automatically when the instance is deleted.
 	   
-	   But sometimes you will want to override this behavior. 
+	  But sometimes you will want to override this behavior. 
            
-	   This feature is very important because you cannot create an image from a boot disk when it is attached to a running instance.
+	  This feature is very important because you cannot create an image from a boot disk when it is attached to a running instance.
 
-	   So you would need to disable Delete boot disk when instance is deleted to enable creating a system image from the boot disk.
+	  So you would need to disable Delete boot disk when instance is deleted to enable creating a system image from the boot disk.
 
-	   **Examining availability policies**
+	  Examining availability policies
 
-	   You can't convert a non-preemptible instance into a preemptible one. This choice must be made at VM creation. A preemptible instance can be interrupted at any time and is available at a lower cost.
+	  You can't convert a non-preemptible instance into a preemptible one. This choice must be made at VM creation. A preemptible instance can be interrupted at any time and is available at a lower cost.
 
-	   If a VM is stopped for any reason, (for example an outage or a hardware failure) the automatic restart feature will start it back up. Is this the behavior you want? Are your applications idempotent (written to handle a second startup properly)?
+	  If a VM is stopped for any reason, (for example an outage or a hardware failure) the automatic restart feature will start it back up. Is this the behavior you want? Are your applications idempotent (written to handle a second startup properly)?
 
 During host maintenance, the VM is set for live migration. However, you can have the VM terminated instead of migrated.
 
-If you make changes, they can sometimes take several minutes to be implemented, especially if they involve networking changes like adding firewalls or changing the external IP.
-	
-
+If you make changes, they can sometimes take several minutes to be implemented, especially if they involve networking changes like adding firewalls or changing the external IP.	
 	c- Explore the VM logs
 
 
@@ -60,11 +58,11 @@ If you make changes, they can sometimes take several minutes to be implemented, 
     
 	a- Create a VM
 
-	gcloud compute instances create windows-vm --zone=europe-west2-a --machine-type=n1-standard-2 --subnet=default --tags=http-server,https-server --image=windows-server-2016-dc-v20200908 --image-project=windows-cloud --boot-disk-size=100GB --boot-disk-type=pd-ssd
+		gcloud compute instances create windows-vm --zone=europe-west2-a --machine-type=n1-standard-2 --subnet=default --tags=http-server,https-server --image=windows-server-2016-dc-v20200908 --image-project=windows-cloud --boot-disk-size=100GB --boot-disk-type=pd-ssd
 
-	gcloud compute firewall-rules create default-allow-http --direction=INGRESS --priority=1000 --network=default --action=ALLOW --rules=tcp:80 --target-tags=http-server
+		gcloud compute firewall-rules create default-allow-http --direction=INGRESS --priority=1000 --network=default --action=ALLOW --rules=tcp:80 --target-tags=http-server
 
-	gcloud compute firewall-rules create default-allow-https --direction=INGRESS --priority=1000 --network=default --action=ALLOW --rules=tcp:443 --target-tags=https-server
+		gcloud compute firewall-rules create default-allow-https --direction=INGRESS --priority=1000 --network=default --action=ALLOW --rules=tcp:443 --target-tags=https-server
 
 	- Result : We created a windows virtual machine with two firewall rules. On the GCP console you will notice that the connection option in the far right column in this case is RDP, not SSH. 
 
