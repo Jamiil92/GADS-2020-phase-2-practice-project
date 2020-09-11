@@ -22,9 +22,7 @@ In this lab, you learn how to perform the following tasks:
 
 	- Result : utility virtual machine created with some details that is explained in the following sections
 	
-	b- Explore VM details
-
-	   **Examining 
+	b- Explore VM details 
 
 	   Notice that you can't change the machine type, the CPU platform, or the zone.
 
