@@ -24,8 +24,6 @@ In this lab, you learn how to perform the following tasks:
 	
 	b- Explore VM details
 
-	   **Examining 
-
 	   Notice that you can't change the machine type, the CPU platform, or the zone.
 
 	   You can add network tags and allow specific network traffic from the internet through firewalls.
