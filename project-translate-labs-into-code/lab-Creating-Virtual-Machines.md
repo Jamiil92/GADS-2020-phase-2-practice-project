@@ -90,36 +90,37 @@ If you make changes, they can sometimes take several minutes to be implemented, 
 
 	a- Create a VM
 
-	gcloud compute instances create custom-vm --zone=us-west1-b --machine-type=custom-6-32768 --subnet=default --image=debian-10-buster-v20200910 --image-project=debian-cloud
+		gcloud compute instances create custom-vm --zone=us-west1-b --machine-type=custom-6-32768 --subnet=default --image=debian-10-buster-v20200910 --image-project=debian-cloud
 
 	b- Connect via SSH to your custom VM
 
 	- Connect to custom-vm:
 
-		gcloud compute ssh custom-vm
+			gcloud compute ssh custom-vm
 
-		if prompted Do you want to continue (Y/n)?  type Y
+			if prompted Do you want to continue (Y/n)?  type Y
 
-		if prompted a message like Did you mean zone [europe-west1-c] for instance: [custom-vm] (Y/n)?  type n
+			if prompted a message like Did you mean zone [europe-west1-c] for instance: [custom-vm] (Y/n)?  type n
 
 	- To see information about unused and used memory and swap space on your custom VM, run the following command:
 
-		free
+			free
+		
 	- To see details about the RAM installed on your VM, run the following command:
 
-		sudo dmidecode -t 17
+			sudo dmidecode -t 17
 
 	- To verify the number of processors, run the following command:
 
-		nproc
+			nproc
 
 	- To see details about the CPUs installed on your VM, run the following command:
 
-		lscpu
+			lscpu
 
 	- To exit the SSH terminal, run the following command:
 
-		exit
+			exit
 
 In this lab, you created several virtual machine instances of different types with different characteristics.
 
